@@ -91,7 +91,7 @@ module "service-bus-queue" {
   servicebus_queue_max_delivery_count = "10"
   servicebus_queue_max_size_in_megabytes= "1024"
   servicebus_queue_requires_duplicate_detection = "false"
-  servicebus_queue_requires_session = "1024"
+  servicebus_queue_requires_session = "false"
 
   default_tags = {
       Administrator = "Someone"

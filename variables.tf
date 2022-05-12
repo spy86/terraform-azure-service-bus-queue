@@ -50,8 +50,8 @@ variable "servicebus_queue_max_delivery_count" {
 }
 variable "servicebus_queue_requires_duplicate_detection" {
   description = "Boolean flag which controls whether the Queue requires duplicate detection. Changing this forces a new resource to be created. Defaults to false."
-  type = string
-  default = "false"
+  type = bool
+  default = false
 }
 variable "servicebus_queue_duplicate_detection_history_time_window" {
   description = "The ISO 8601 timespan duration during which duplicates can be detected. Defaults to 10 minutes (PT10M)."
@@ -66,8 +66,8 @@ variable "servicebus_queue_max_size_in_megabytes" {
 }
 variable "servicebus_queue_requires_session" {
   description = "Boolean flag which controls whether the Queue requires sessions. This will allow ordered handling of unbounded sequences of related messages. With sessions enabled a queue can guarantee first-in-first-out delivery of messages. Changing this forces a new resource to be created. Defaults to false."
-  type = string
-  default = "false"
+  type = bool
+  default = false
 }
 variable "servicebus_queue_default_message_ttl" {
   description = "The ISO 8601 timespan duration of the TTL of messages sent to this queue. This is the default value used when TTL is not set on message itself."
@@ -76,8 +76,8 @@ variable "servicebus_queue_default_message_ttl" {
 }
 variable "servicebus_queue_dead_lettering_on_message_expiration" {
   description = "Boolean flag which controls whether the Queue has dead letter support when a message expires. Defaults to false."
-  type = string
-  default = "true"
+  type = bool
+  default = true
 }
 variable "servicebus_queue_auto_delete_on_idle" {
   description = "The ISO 8601 timespan duration of the idle interval after which the Queue is automatically deleted, minimum of 5 minutes."
@@ -86,11 +86,11 @@ variable "servicebus_queue_auto_delete_on_idle" {
 }
 variable "servicebus_queue_enable_partitioning" {
   description = "Boolean flag which controls whether to enable the queue to be partitioned across multiple message brokers. Changing this forces a new resource to be created. Defaults to false for Basic and Standard. For Premium, it MUST be set to true."
-  type = string
-  default = "false"
+  type = bool
+  default = false
 }
 variable "servicebus_queue_enable_express" {
   description = "Boolean flag which controls whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage. Defaults to false for Basic and Standard. For Premium, it MUST be set to false."
-  type = string
-  default = "false"
+  type = bool
+  default = false
 }

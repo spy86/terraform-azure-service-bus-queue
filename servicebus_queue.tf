@@ -45,5 +45,7 @@ resource "azurerm_servicebus_queue_authorization_rule" "manage_auth_rule" {
   name     = "${local.manage_auth_rule_name}"
   queue_id = "${azurerm_servicebus_queue.main.id}"
 
+  send   = true
+  listen = true
   manage = true
 }

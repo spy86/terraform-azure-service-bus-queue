@@ -30,7 +30,7 @@ variable "resource_group_name" {
 ###########################
 # Service Bus Quee groups vars
 ###########################
-variable "servicebus_queuename" {
+variable "servicebus_queue_name" {
   description = "Specifies the name of the ServiceBus Queue resource. Changing this forces a new resource to be created."
   type = string
 }

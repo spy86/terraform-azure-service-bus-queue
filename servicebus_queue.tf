@@ -10,7 +10,7 @@ data "azurerm_servicebus_namespace" "main" {
   }
 
 resource "azurerm_servicebus_queue" "main" {
-  name         = "${var.servicebus_queuename}"
+  name         = "${var.servicebus_queue_name}"
   namespace_id = "${data.azurerm_servicebus_namespace.main.id}"
 
   lock_duration                           = "${var.servicebus_queue_lock_duration}"

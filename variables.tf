@@ -94,3 +94,8 @@ variable "servicebus_queue_enable_express" {
   type = bool
   default = false
 }
+variable "servicebus_namespace_sku" {
+  description = " Defines which tier to use. Options are Basic, Standard or Premium. Please note that setting this field to Premium will force the creation of a new resource."
+  type = string
+  sensitive = false
+}

@@ -1,6 +1,6 @@
 output "standard_name" {
   description = "Specifies the name of the ServiceBus Queue resource"
-  value = "${azurerm_servicebus_queue.main.name}"
+  value = "${azurerm_servicebus_queue.standard.name}"
   sensitive = true
   depends_on = [ "azurerm_servicebus_queue_authorization_rule.standard_send_auth_rule" ]
 }

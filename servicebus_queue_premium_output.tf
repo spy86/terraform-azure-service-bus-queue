@@ -1,6 +1,6 @@
 output "premium_name" {
   description = "Specifies the name of the ServiceBus Queue resource"
-  value = "${azurerm_servicebus_queue.main.name}"
+  value = "${azurerm_servicebus_queue.premium.name}"
   sensitive = true
   depends_on = [ "azurerm_servicebus_queue_authorization_rule.premium_send_auth_rule" ]
 }

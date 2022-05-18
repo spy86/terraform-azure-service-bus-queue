@@ -1,15 +1,5 @@
-locals {
-  send_auth_rule_name   = "SendSharedAccessKey"
-  listen_auth_rule_name = "ListenSharedAccessKey"
-  manage_auth_rule_name = "ManageSharedAccessKey"
-}
-
-data "azurerm_servicebus_namespace" "main" {
-    name                = "${var.servicebus_namespace_name}"
-    resource_group_name = "${data.azurerm_resource_group.rg.name}"
-  }
-
-resource "azurerm_servicebus_queue" "main" {
+resource "azurerm_servicebus_queue" "premium" {
+  count = "${var.servicebus_namespace_sku == "Premium" ? 1 : 0}"
   name         = "${var.servicebus_queue_name}"
   namespace_id = "${data.azurerm_servicebus_namespace.main.id}"
 
@@ -27,23 +17,26 @@ resource "azurerm_servicebus_queue" "main" {
   enable_express                       = "${var.servicebus_queue_enable_express}"
 }
 
-resource "azurerm_servicebus_queue_authorization_rule" "send_auth_rule" {
-  name     = "${local.send_auth_rule_name}"
-  queue_id = "${azurerm_servicebus_queue.main.id}"
+resource "azurerm_servicebus_queue_authorization_rule" "premium_send_auth_rule" {
+  count = "${var.servicebus_namespace_sku == "Premium" ? 1 : 0}"
+  name     = "SendSharedAccessKey"
+  queue_id = "${azurerm_servicebus_queue.premium[count.index].id}"
 
   send = true
 }
 
-resource "azurerm_servicebus_queue_authorization_rule" "listen_auth_rule" {
-  name     = "${local.listen_auth_rule_name}"
-  queue_id = "${azurerm_servicebus_queue.main.id}"
+resource "azurerm_servicebus_queue_authorization_rule" "premium_listen_auth_rule" {
+  count = "${var.servicebus_namespace_sku == "Premium" ? 1 : 0}"
+  name     = "ListenSharedAccessKey"
+  queue_id = "${azurerm_servicebus_queue.premium[count.index].id}"
 
   listen = true
 }
 
-resource "azurerm_servicebus_queue_authorization_rule" "manage_auth_rule" {
-  name     = "${local.manage_auth_rule_name}"
-  queue_id = "${azurerm_servicebus_queue.main.id}"
+resource "azurerm_servicebus_queue_authorization_rule" "premium_manage_auth_rule" {
+  count = "${var.servicebus_namespace_sku == "Premium" ? 1 : 0}"
+  name     = "ManageSharedAccessKey"
+  queue_id = "${azurerm_servicebus_queue.premium[count.index].id}"
 
   send   = true
   listen = true

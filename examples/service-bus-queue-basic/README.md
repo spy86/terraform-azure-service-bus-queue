@@ -1,3 +1,6 @@
+## How to use
+
+```
 provider "azurerm" {
 features {}
 }

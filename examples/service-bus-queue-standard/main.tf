@@ -1,6 +1,10 @@
+provider "azurerm" {
+features {}
+}
+
 module "service-bus-queue" {
   source  = "spy86/service-bus-queue/azure"
-  version = "1.0.4"
+  version = "1.0.5"
   resource_group_name = "weu-test-rg"
   servicebus_namespace_name = "dev-c803dd50-weu-sb-ns"
   servicebus_queue_name = "queue01"

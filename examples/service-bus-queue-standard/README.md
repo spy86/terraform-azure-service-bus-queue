@@ -1,3 +1,6 @@
+## How to use
+
+```
 provider "azurerm" {
 features {}
 }
@@ -22,7 +25,7 @@ module "service-bus-queue" {
   servicebus_queue_max_size_in_megabytes= "1024"
   servicebus_queue_requires_duplicate_detection = "false"
   servicebus_queue_requires_session = "false"
-  servicebus_namespace_sku ="Premium"
+  servicebus_namespace_sku ="Standard"
 
   default_tags = {
       Administrator = "Someone"
@@ -32,3 +35,4 @@ module "service-bus-queue" {
       ManagedByTerraform = "True"
 }
 }
+```

@@ -1,3 +1,6 @@
+## How to use
+
+```
 provider "azurerm" {
 features {}
 }
@@ -32,3 +35,4 @@ module "service-bus-queue" {
       ManagedByTerraform = "True"
 }
 }
+```

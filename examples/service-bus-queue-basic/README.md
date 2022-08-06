@@ -24,3 +24,4 @@ module "service-bus-queue" {
       ManagedByTerraform = "True"
 }
 }
+```
